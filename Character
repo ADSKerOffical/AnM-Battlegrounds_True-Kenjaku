@@ -1,0 +1,479 @@
+local ohString1 = "Kenjaku"
+game:GetService("ReplicatedStorage").Picked:FireServer(ohString1)
+
+wait(2)
+  plr = game.Players.LocalPlayer
+  hu = plr.Character.Humanoid
+local tool = Instance.new("Tool")
+tool.Name = "Shadow Rush"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 2 then
+                lastPressTime = currentTime 
+                game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * 300
+ wait()
+for i = 1, 2 do
+game:GetService("ReplicatedStorage").Remotes.KickSlam:FireServer()
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Sequential Combo"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 5 then
+                lastPressTime = currentTime 
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * 150
+game:GetService("ReplicatedStorage").Remotes.Punches:FireServer()
+  wait(1.6)
+local closestDistance = math.huge
+                    local closestHumanoid = nil
+                    local Usuario = game.Players.LocalPlayer
+
+                    for _, v in pairs(workspace:GetDescendants()) do
+                        if v:IsA("Humanoid") and v.RootPart and v.RootPart.Parent ~= Usuario.Character then
+                            local distance =
+                                (v.RootPart.Position - Usuario.Character.HumanoidRootPart.Position).magnitude
+                            if distance < closestDistance and distance <= 100 then
+                                closestDistance = distance
+                                closestHumanoid = v
+                            end
+                        end
+                    end
+
+                    if closestHumanoid and closestHumanoid.Health ~= 0 then
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * 250
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+wait(0.2)
+                      
+game:GetService("ReplicatedStorage").Remotes.KickSlam:FireServer()
+                    end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Experienced Fight"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 5 then
+                lastPressTime = currentTime 
+       for i = 1, 1 do
+game:GetService("ReplicatedStorage").Remotes.KickSlam:FireServer()
+end
+  wait(0.4)
+  game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+game:GetService("ReplicatedStorage"):FindFirstChild("AfterImageEvent"):FireServer()
+     task.wait(0.5)
+  local closestDistance = math.huge
+                    local closestHumanoid = nil
+                    local Usuario = game.Players.LocalPlayer
+
+                    for _, v in pairs(workspace:GetDescendants()) do
+                        if v:IsA("Humanoid") and v.RootPart and v.RootPart.Parent ~= Usuario.Character then
+                            local distance =
+                                (v.RootPart.Position - Usuario.Character.HumanoidRootPart.Position).magnitude
+                            if distance < closestDistance and distance <= 70 then
+                                closestDistance = distance
+                                closestHumanoid = v
+                            end
+                        end
+                    end
+
+                     if closestHumanoid and closestHumanoid.RootPart and closestHumanoid.Health ~= 0 then
+ game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector * -300
+   wait(0.5)
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18541222576"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(8)
+       local humanoidPosition = closestHumanoid.RootPart
+       local args = {
+           [1] = humanoidPosition.CFrame,
+           [2] = closestHumanoid.MaxHealth / 12
+       }
+
+ game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+  wait(0.1)
+k:AdjustSpeed(1)
+   end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local function tools()
+local tool = Instance.new("Tool")
+tool.Name = "Path of Souls"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 10 then
+                lastPressTime = currentTime 
+                local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local hu = char.Humanoid
+local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+local playerForward = humanoidRootPart.CFrame.LookVector
+local startPos = humanoidRootPart.CFrame * CFrame.new(5 * playerForward)
+
+local numUzumaki = 10
+local spacing = 22.5
+
+for i = 1, numUzumaki do
+    local args = {
+        [1] = startPos + ((i - 1) * spacing * playerForward),
+        [2] = hu.MaxHealth / 12.5
+    }
+    game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Liberation"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 5 then
+                lastPressTime = currentTime 
+                local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local hu = char.Humanoid
+local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+local playerForward = humanoidRootPart.CFrame
+
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://17177793395"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+
+for i = 1, 20 do
+  wait(0.05)
+local tochk = humanoidRootPart.CFrame + Vector3.new(math.random(-100, 100), math.random(-5, 5), math.random(-100,100))
+local RTy = math.random(5, 20)
+hu:TakeDamage(hu.MaxHealth / (RTy * 20))
+    local args = {
+        [1] = tochk,
+        [2] = hu.MaxHealth / RTy
+    }
+    game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+end
+  wait(1)
+local player = game.Players.LocalPlayer
+local humanoid = player.Character.Humanoid
+local activeTracks = humanoid:GetPlayingAnimationTracks()
+
+for _, track in pairs(activeTracks) do
+    track:Stop()
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Rain of Curses"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 10 then
+                lastPressTime = currentTime 
+                local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local clickPosition = mouse.Hit.Position
+
+for o = 1, 5 do
+  wait(0.5)
+local function spawnUzumakiCircle(centerPosition)
+    local radius = o * 5
+    local numUzumaki = o * 2
+
+    for i = 1, numUzumaki do
+        local angle = (i - 1) * 2 * math.pi / numUzumaki
+        local x = centerPosition.X + radius * math.cos(angle)
+        local y = centerPosition.Y
+        local z = centerPosition.Z + radius * math.sin(angle)
+
+        local args = {
+            [1] = CFrame.new(x, y, z),
+            [2] = game.Players.LocalPlayer.Character.Humanoid.Health / 10
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+
+spawnUzumakiCircle(clickPosition)
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Maximum Uzumaki: Enlargement Technique"
+tool.RequiresHandle = false
+
+local repeatCount = 1
+local lastPressTime = 0
+
+tool.Activated:Connect(function()
+    local currentTime = tick()
+    if currentTime - lastPressTime >= 10 then
+        lastPressTime = currentTime
+        
+        if repeatCount > 5 then
+            repeatCount = 1
+        end
+
+        for i = 1, repeatCount do
+            game:GetService("Players").LocalPlayer.Backpack["Maximum Uzumaki"].Move1.Event:FireServer()
+        end
+
+        repeatCount = repeatCount + 1
+    end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Supreme Spirit"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 30 then
+                lastPressTime = currentTime 
+      local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18497385818"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+  task.wait(5)
+                local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+local playerForward = humanoidRootPart.CFrame.LookVector
+local startPos = humanoidRootPart.CFrame
+
+local numUzumaki = 50
+local radius = 40
+
+for i = 1, numUzumaki do
+    local theta = math.random() * 2 * math.pi
+    local phi = math.acos(2 * math.random() - 1)
+    local x = radius * math.sin(phi) * math.cos(theta)
+    local y = radius * math.sin(phi) * math.sin(theta)
+    local z = radius * math.cos(phi)
+    local pos = startPos * CFrame.new(x, y, z)
+    
+    local args = {
+                [1] = pos,
+                [2] = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
+            }
+    game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Rift"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 30 then
+                lastPressTime = currentTime 
+                local player = game.Players.LocalPlayer
+local playerPosition = player.Character.HumanoidRootPart.Position
+
+for g = 1, 10 do
+  wait(0.5)
+local function spawnUzumakiCircle(centerPosition)
+    local radius = g * 15
+    local numUzumaki = (g * 8) / 2
+
+    for i = 1, numUzumaki do
+        local angle = (i - 1) * 2 * math.pi / numUzumaki
+        local x = centerPosition.X + radius * math.cos(angle)
+        local y = centerPosition.Y
+        local z = centerPosition.Z + radius * math.sin(angle)
+
+        local args = {
+            [1] = CFrame.new(x, y, z),
+            [2] = player.Character.Humanoid.MaxHealth / g
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+
+spawnUzumakiCircle(playerPosition)
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Domain Expansion: Armageddon"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 80 then
+                lastPressTime = currentTime 
+           local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+local function findHumanoids()
+    local humanoids = {}
+
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Humanoid") and v.RootPart then
+            table.insert(humanoids, v)
+        end
+    end
+
+    return humanoids
+end
+
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18497385818"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+task.wait(5.5)
+k:AdjustSpeed(0)
+local humanoids = findHumanoids()
+  for i = 1, 50 do
+  wait(0.5)
+for _, humanoid in ipairs(humanoids) do
+    if humanoid.Parent ~= game.Players.LocalPlayer.Character then
+        local args = {
+            [1] = humanoid.RootPart.CFrame,
+            [2] = humanoid.MaxHealth / 10
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+ end
+ k:AdjustSpeed(1)
+ game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local player = game.Players.LocalPlayer
+player.Character.ChildAdded:Connect(function(item)
+    if item.Name == "Maximum Uzumaki" then
+    local lastPressTime = 0
+        item.Activated:Connect(function()
+   local currentTime = tick()
+            if currentTime - lastPressTime >= 10 then
+                lastPressTime = currentTime 
+       for i = 1, 2 do
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Maximum Uzumaki").Move1.Event:FireServer()
+end
+  item.Parent = player.Backpack
+            end
+        end)
+    end
+end)
+
+player.Character.ChildAdded:Connect(function(item)
+    if item.Name == "Supreme Art: Maximum Uzumaki" then
+    local lastPressTime = 0
+        item.Activated:Connect(function()
+   local currentTime = tick()
+            if currentTime - lastPressTime >= 30 then
+                lastPressTime = currentTime 
+          for i = 1, 4 do
+game:GetService("Players").LocalPlayer.Character:FindFirstChild("Supreme Art: Maximum Uzumaki").Move1.Event:FireServer()
+end
+  item.Parent = player.Backpack
+            end
+        end)
+    end
+end)
+end
+
+local function anim()
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+game.Players.LocalPlayer.Backpack["Geto Fit"].Parent = game.Players.LocalPlayer.Character
+   wait(0.1)
+game.Players.LocalPlayer.Character["Geto Fit"]:Activate()
+ wait(0.1)
+game.Players.LocalPlayer.Character["Geto Fit"]:Destroy()
+end
+
+local tool = Instance.new("Tool")
+tool.Name = "King of Spirits"
+tool.RequiresHandle = false
+
+tool.Activated:Connect(function()
+ tool:Destroy()
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+ coroutine.wrap(anim)()
+   wait(1)
+ coroutine.wrap(tools)()
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local function deathef()
+repeat wait(0.5)
+ if hu.Health <= 0 then
+ local players = game:GetService("Players"):GetPlayers()
+
+for _, player in ipairs(players) do
+    if player.Character then
+        local args = {
+            [1] = player.Character.HumanoidRootPart.CFrame,
+            [2] = game.Players.LocalPlayer.Character.Hunanoid.MaxHealth
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+ end
+until hu.Health <= 0
+end
+
+coroutine.wrap(deathef)()
