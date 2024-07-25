@@ -466,7 +466,7 @@ for _, player in ipairs(players) do
     if player.Character then
         local args = {
             [1] = player.Character.HumanoidRootPart.CFrame,
-            [2] = game.Players.LocalPlayer.Character.Hunanoid.MaxHealth
+            [2] = game.Players.LocalPlayer.Character.Humanoid.MaxHealth
         }
 
         game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
