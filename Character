@@ -438,9 +438,9 @@ k:Play()
 k:AdjustSpeed(1)
 task.wait(5.5)
 k:AdjustSpeed(0)
-local humanoids = findHumanoids()
   for i = 1, 50 do
   wait(0.5)
+local humanoids = findHumanoids()
 for _, humanoid in ipairs(humanoids) do
     if humanoid.Parent ~= game.Players.LocalPlayer.Character then
         local args = {
@@ -493,6 +493,11 @@ end
         end)
     end
 end)
+
+local animateScript = game.Players.LocalPlayer.Character.Animate
+
+animateScript.jump.JumpAnim.AnimationId = "rbxassetid://14806128971"
+animateScript.walk.WalkAnim.AnimationId = "rbxassetid://14806125490"
 end
 
 local function anim()
