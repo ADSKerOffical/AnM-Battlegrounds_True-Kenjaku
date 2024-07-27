@@ -461,6 +461,235 @@ end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
 
+local function tools1()
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Circle of Death"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 60 then
+                lastPressTime = currentTime 
+          local player = game.Players.LocalPlayer
+local playerPosition = player.Character.HumanoidRootPart.Position
+
+for i = 1, 30 do
+  wait(0.5)
+local function spawnUzumakiCircle(centerPosition)
+    local radius = 100
+    local numUzumaki = 20
+
+    for i = 1, numUzumaki do
+        local angle = (i - 1) * 2 * math.pi / numUzumaki
+        local x = centerPosition.X + radius * math.cos(angle)
+        local y = centerPosition.Y
+        local z = centerPosition.Z + radius * math.sin(angle)
+
+        local args = {
+            [1] = CFrame.new(x, y, z),
+            [2] = player.Character.Humanoid.MaxHealth
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+
+spawnUzumakiCircle(playerPosition)
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Domain Expansion: Self-embodiment of the Ideal"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 30 then
+                lastPressTime = currentTime 
+          game:GetService("ReplicatedStorage").MahitoDomainExpansion.MahitoDomainEvent:FireServer()
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Safe Place"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 20 then
+                lastPressTime = currentTime 
+            last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+local part = Instance.new("Part")
+part.Name = "AntiFallPart"
+part.Size = Vector3.new(10000, 10, 10000)
+part.Transparency = 0
+part.Anchored = true
+part.Color = Color3.fromRGB(50,50,50)
+part.Material = Enum.Material.Metal
+part.Position = Vector3.new(1000, 1000, 1000)
+part.Parent = game.Workspace
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://14766292561"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+ wait(0.3)
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1000, 1010, 1000)
+ wait(10)
+ game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Vanish"):FireServer()
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
+ part:Destroy()
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Motion Detector"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 50 then
+                lastPressTime = currentTime 
+                local detectionTime = 15
+local detectedHumanoids = {}
+
+local function detectMovement(player)
+  local humanoid = player.Character:FindFirstChild("Humanoid")
+  if humanoid then
+    local previousPosition = humanoid.Torso.Position
+    
+    humanoid.Running:Connect(function()
+      if humanoid.Torso.Position ~= previousPosition then
+        detectedHumanoids[player.Name] = true
+        previousPosition = humanoid.Torso.Position
+       
+        local args = {
+            [1] = humanoid.Torso.CFrame,
+            [2] = humanoid.MaxHealth / 10
+        }
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+      end
+    end)
+  end
+end
+
+for _, player in pairs(game.Players:GetPlayers()) do
+ if player ~= game.Players.LocalPlayer then
+  detectMovement(player)
+ end
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+ if player ~= game.Players.LocalPlayer then
+  detectMovement(player)
+ end
+end)
+
+wait(detectionTime)
+detectedHumanoids = {}
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+
+local tool = Instance.new("Tool")
+tool.Name = "Suguru Geto"
+tool.RequiresHandle = false
+
+local function damage()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local Humanoid = Character:WaitForChild("Humanoid")
+
+local function onHealthChanged()
+Spooky = Instance.new("Sound", Humanoid.RootPart)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://623435300"
+Spooky.Volume = 2
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = false
+Spooky:Play()
+    local function findHumanoids()
+    local humanoids = {}
+
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Humanoid") and v.RootPart then
+            table.insert(humanoids, v)
+        end
+    end
+
+    return humanoids
+end
+
+local humanoids = findHumanoids()
+for _, humanoid in ipairs(humanoids) do
+    if humanoid.Parent ~= game.Players.LocalPlayer.Character then
+        local args = {
+            [1] = humanoid.RootPart.CFrame,
+            [2] = Humanoid.MaxHealth - Humanoid.Health
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+end
+
+Humanoid.HealthChanged:Connect(onHealthChanged)
+end
+
+local function deletetools()
+local Backpack = game.Players.LocalPlayer.Backpack
+local Character = game.Players.LocalPlayer.Character
+for _,v in pairs(Backpack:GetChildren()) do
+   if v:IsA("Tool") or v:IsA("HopperBin") then
+     if v.Name == "Maximum Uzumaki: Enlargement Technique" or v.Name == "Liberation" or v.Name == "Path of Souls" then
+       v:Destroy()
+     end
+   end
+end
+
+for _,v in pairs(Character:GetChildren()) do
+   if v:IsA("Tool") or v:IsA("HopperBin") then
+     if v.Name == "Maximum Uzumaki: Enlargement Technique" or v.Name == "Liberation" or v.Name == "Path of Souls" then
+       v:Destroy()
+     end
+   end 
+end
+end
+
+tool.Activated:Connect(function()
+ tool:Destroy()
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18408908782"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+  task.wait(3)
+ coroutine.wrap(damage)()
+ coroutine.wrap(tools1)()
+ coroutine.wrap(deletetools)()
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
 local player = game.Players.LocalPlayer
 player.Character.ChildAdded:Connect(function(item)
     if item.Name == "Maximum Uzumaki" then
