@@ -603,6 +603,69 @@ detectedHumanoids = {}
 end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Deadly Storm"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+  if currentTime - lastPressTime >= 60 then
+    lastPressTime = currentTime 
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+    local Anim = Instance.new("Animation")
+    Anim.AnimationId = "rbxassetid://16785444538"
+    local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+    k:Play()
+    k:AdjustSpeed(1)
+    wait(6)
+
+    local player = game.Players.LocalPlayer
+    local char = player.Character or player.CharacterAdded:Wait()
+    local hu = char.Humanoid
+    local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+    local uzumakiWidth = 30
+
+    for i = 1, 40 do
+      local playerForward = humanoidRootPart.CFrame.LookVector
+      local startPos = humanoidRootPart.CFrame * CFrame.new(5 * playerForward)
+
+      wait(0.5)
+      local numUzumaki = 16
+      local spacing = 30
+      local sideUzumakiCount = math.floor(numUzumaki / 2)
+
+      for j = 1, 1 do
+        for i = 1, sideUzumakiCount do
+          local args = {
+            [1] = startPos + ((i - 1) * spacing * playerForward) + ((j - 1.5) * uzumakiWidth * humanoidRootPart.CFrame.RightVector),
+            [2] = math.huge
+          }
+          game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+        end
+      end
+
+      for j = 1, 1 do
+        for i = 1, sideUzumakiCount do
+          local args = {
+            [1] = startPos + ((i - 1) * spacing * playerForward) + ((j - 1.5) * uzumakiWidth * humanoidRootPart.CFrame.RightVector * -1),
+            [2] = math.huge
+          }
+          game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+        end
+      end
+
+    end
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+  end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
 end
 
 local tool = Instance.new("Tool")
