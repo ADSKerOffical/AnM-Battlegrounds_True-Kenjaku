@@ -182,6 +182,51 @@ end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
 
+local function heal()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function activateRandomAbility()
+    local players = Players:GetPlayers()
+
+    for _, player in ipairs(players) do
+        if player ~= LocalPlayer then
+            local tools = player.Backpack:GetChildren()
+
+            for _, tool in ipairs(tools) do
+                local remoteEvents = {}
+                for _, descendant in ipairs(tool:GetDescendants()) do
+                    if descendant:IsA("RemoteEvent") then
+                        table.insert(remoteEvents, descendant)
+                    end
+                end
+
+                if #remoteEvents > 0 then
+                    local randomEvent = remoteEvents[math.random(1, #remoteEvents)]
+                    for i = 1, 3 do
+                       if tool.Name == "Reverse Cursed Technique" or tool.Name == "Heal" then
+                        randomEvent:FireServer()
+                       end
+                    end
+                else
+                    for _, descendant in ipairs(tool:GetDescendants()) do
+                        if descendant:IsA("RemoteFunction") then
+                            descendant:InvokeServer()
+                            break
+                        elseif descendant:IsA("BindableEvent") then
+                            descendant:Fire()
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+activateRandomAbility()
+end
+
 local function tools()
 local tool = Instance.new("Tool")
 tool.Name = "Path of Souls"
@@ -325,6 +370,62 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
 local tool = Instance.new("Tool")
+tool.Name = "Search for Life"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 15 then
+                lastPressTime = currentTime 
+                local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local function activateRandomAbility()
+    local players = Players:GetPlayers()
+
+    for _, player in ipairs(players) do
+        if player ~= LocalPlayer then
+            local tools = player.Backpack:GetChildren()
+
+            for _, tool in ipairs(tools) do
+                local remoteEvents = {}
+                for _, descendant in ipairs(tool:GetDescendants()) do
+                    if descendant:IsA("RemoteEvent") then
+                        table.insert(remoteEvents, descendant)
+                    end
+                end
+
+                if #remoteEvents > 0 then
+                    local randomEvent = remoteEvents[math.random(1, #remoteEvents)]
+                    for i = 1, 3 do
+                       if tool.Name == "Reverse Cursed Technique" or tool.Name == "Heal" then
+                        randomEvent:FireServer()
+                       end
+                    end
+                else
+                    for _, descendant in ipairs(tool:GetDescendants()) do
+                        if descendant:IsA("RemoteFunction") then
+                            descendant:InvokeServer()
+                            break
+                        elseif descendant:IsA("BindableEvent") then
+                            descendant:Fire()
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+
+activateRandomAbility()
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
 tool.Name = "Higher Technique: Supreme Spirit"
 tool.RequiresHandle = false
 
@@ -415,7 +516,8 @@ local lastPressTime = 0
 tool.Activated:Connect(function()
   local currentTime = tick()
             if currentTime - lastPressTime >= 80 then
-                lastPressTime = currentTime 
+                lastPressTime = currentTime
+coroutine.wrap(heal)()
            local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
@@ -605,6 +707,43 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
 local tool = Instance.new("Tool")
+tool.Name = "Shoot of Souls"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 10 then
+                lastPressTime = currentTime 
+                local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://15061182798"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(0.75)
+   wait(1.2)
+ local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local hu = char.Humanoid
+local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+local playerForward = humanoidRootPart.CFrame.LookVector
+local startPos = humanoidRootPart.CFrame * CFrame.new(5 * playerForward)
+
+local numUzumaki = 25
+local spacing = 40
+
+for i = 1, numUzumaki do
+    local args = {
+        [1] = startPos + ((i - 1) * spacing * playerForward),
+        [2] = 2500
+    }
+    game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
 tool.Name = "Higher Technique: Deadly Storm"
 tool.RequiresHandle = false
 
@@ -612,7 +751,8 @@ local lastPressTime = 0
 tool.Activated:Connect(function()
   local currentTime = tick()
   if currentTime - lastPressTime >= 60 then
-    lastPressTime = currentTime 
+    lastPressTime = currentTime
+coroutine.wrap(heal)()
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
 local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
