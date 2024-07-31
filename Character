@@ -744,6 +744,179 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
 local tool = Instance.new("Tool")
+tool.Name = "Stomp"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 6 then
+                lastPressTime = currentTime 
+         for i = 1, 10 do
+game:GetService("ReplicatedStorage").Remotes.KickSlam:FireServer()
+end
+  wait(0.1)
+local player = game.Players.LocalPlayer
+local humanoid = player.Character.Humanoid
+local activeTracks = humanoid:GetPlayingAnimationTracks()
+
+for _, track in pairs(activeTracks) do
+    track:Stop()
+end
+  wait()
+  local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://14749099534"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+
+for g = 1, 2 do
+local centerPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+local radius = 30 * g
+local numUzumaki = (8 * g) / 2
+
+for i = 1, numUzumaki do
+    local angle = (i - 1) * 2 * math.pi / numUzumaki
+    local x = centerPosition.X + radius * math.cos(angle)
+    local y = centerPosition.Y
+    local z = centerPosition.Z + radius * math.sin(angle)
+
+    local args = {
+        [1] = CFrame.new(x, y, z),
+        [2] = humanoid.MaxHealth / 10
+    }
+
+    game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+end
+end  
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Higher Technique: Hail of Spirits"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 10 then
+                lastPressTime = currentTime 
+                local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://17602595990"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(2)
+local mouse = game.Players.LocalPlayer:GetMouse()
+local clickPosition = mouse.Hit.Position
+  wait(2)
+ for h = 1, 5 do
+local function spawnUzumakiCircle(centerPosition)
+    local radius = 15 * h
+    local numUzumaki = (8 * h) / 2
+
+    for i = 1, numUzumaki do
+        local angle = (i - 1) * 2 * math.pi / numUzumaki
+        local x = centerPosition.X + radius * math.cos(angle)
+        local y = centerPosition.Y
+        local z = centerPosition.Z + radius * math.sin(angle)
+
+        local args = {
+            [1] = CFrame.new(x, y, z),
+            [2] = 1000
+        }
+
+        game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+    end
+end
+
+spawnUzumakiCircle(clickPosition)
+end
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
+tool.Name = "Great Decay Of Worlds"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 80 then
+                lastPressTime = currentTime 
+                coroutine.wrap(heal)()
+               local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+
+local function findHumanoids()
+    local humanoids = {}
+
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Humanoid") and v.RootPart then
+            table.insert(humanoids, v)
+        end
+    end
+
+    return humanoids
+end
+
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://18497385818"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+
+task.wait(5.5)
+k:AdjustSpeed(0)
+
+for i = 1, 70 do
+    wait(0.5)
+    local humanoids = findHumanoids()
+    for _, humanoid in ipairs(humanoids) do
+        if humanoid.Parent ~= game.Players.LocalPlayer.Character then
+            -- Spawn Uzumaki circle around humanoid
+            local centerPosition = humanoid.RootPart.Position
+            local radius = 25
+            local numUzumaki = 8
+
+            for j = 1, numUzumaki do
+                local angle = (j - 1) * 2 * math.pi / numUzumaki
+                local x = centerPosition.X + radius * math.cos(angle)
+                local y = centerPosition.Y
+                local z = centerPosition.Z + radius * math.sin(angle)
+
+                local args = {
+                    [1] = CFrame.new(x, y, z),
+                    [2] = humanoid.MaxHealth / 20
+                }
+
+                game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+            end
+
+            local args = {
+                [1] = humanoid.RootPart.CFrame,
+                [2] = humanoid.MaxHealth / 10
+            }
+
+            game:GetService("Players").LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+        end
+    end
+end
+
+k:AdjustSpeed(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true) 
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
 tool.Name = "Higher Technique: Deadly Storm"
 tool.RequiresHandle = false
 
