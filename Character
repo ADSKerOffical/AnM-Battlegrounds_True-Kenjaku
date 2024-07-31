@@ -839,6 +839,64 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
 local tool = Instance.new("Tool")
+tool.Name = "Cursed Infinity Technique"
+tool.RequiresHandle = false
+
+local lastPressTime = 0
+tool.Activated:Connect(function()
+  local currentTime = tick()
+            if currentTime - lastPressTime >= 30 then
+                lastPressTime = currentTime 
+                local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://15061182798"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(0.25)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 5
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+   wait(4)
+ local player = game.Players.LocalPlayer
+    local char = player.Character or player.CharacterAdded:Wait()
+    local hu = char.Humanoid
+    local humanoidRootPart = char:WaitForChild("HumanoidRootPart")
+    local uzumakiWidth = 30
+    
+    local playerForward = humanoidRootPart.CFrame.LookVector
+      local startPos = humanoidRootPart.CFrame * CFrame.new(5 * playerForward)
+      local numUzumaki = 16
+      local spacing = 30
+      local sideUzumakiCount = math.floor(numUzumaki / 2)
+
+      for j = 1, 10 do
+        for i = 1, sideUzumakiCount do
+          local args = {
+            [1] = startPos + ((i - 1) * spacing * playerForward) + ((1 - 1.5) * uzumakiWidth * humanoidRootPart.CFrame.RightVector * j),
+            [2] = math.huge
+          }
+          game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+        end
+      end
+
+      for j = 1, 10 do
+        for i = 1, sideUzumakiCount do
+          local args = {
+            [1] = startPos + ((i - 1) * spacing * playerForward) + ((1 - 1.5) * uzumakiWidth * humanoidRootPart.CFrame.RightVector * -j),
+            [2] = math.huge
+          }
+          game.Players.LocalPlayer.Backpack["Mini Uzumaki"].FireServer.RemoteEvent:FireServer(unpack(args))
+        end
+      end
+ wait(1)
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+ local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+            end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+local tool = Instance.new("Tool")
 tool.Name = "Great Decay Of Worlds"
 tool.RequiresHandle = false
 
@@ -981,6 +1039,12 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 end
 
+local function pasive()
+ if game:GetService("Players").LocalPlayer.Character.Humanoid.Health <= 150 and game:GetService("Players").LocalPlayer.Character.Humanoid.Health ~= 0 then
+ coroutine.wrap(heal)()
+ end
+end
+
 local tool = Instance.new("Tool")
 tool.Name = "Suguru Geto"
 tool.RequiresHandle = false
@@ -1059,6 +1123,7 @@ k:AdjustSpeed(1)
   task.wait(3)
  coroutine.wrap(damage)()
  coroutine.wrap(tools1)()
+ coroutine.wrap(pasive)()
  coroutine.wrap(deletetools)()
  local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
