@@ -1128,6 +1128,7 @@ k:AdjustSpeed(1)
  coroutine.wrap(tools1)()
  coroutine.wrap(pasive)()
  coroutine.wrap(deletetools)()
+game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId = "rbxassetid://17264617275"
  local StarterGui = game:GetService("StarterGui")
 StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
 end)
